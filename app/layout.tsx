@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "./components/Nav";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+import { ThemeProvider } from "./components/theme-provider";
 
 export const metadata: Metadata = {
 };
@@ -15,12 +12,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="fr" className={cn("font-sans", geist.variable)}
-    >
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Nav />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Nav />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

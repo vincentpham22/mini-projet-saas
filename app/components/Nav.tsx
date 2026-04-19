@@ -1,8 +1,7 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-
-import React from 'react'
+import { ThemeToggle } from "./ThemeToggle"
 
 export default function Nav() {
   return (
@@ -11,6 +10,9 @@ export default function Nav() {
             <Link href="/">
                 <Image src="/vercel.svg" alt="Logo" width={30} height={30}/>
             </Link>
+        </div>
+        <div className="flex items-center gap-4">
+            <ThemeToggle />
         </div>
     </nav>
   )
