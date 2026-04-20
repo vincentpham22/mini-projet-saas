@@ -4,7 +4,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 
 export default function ButtonsProvider() {
   return (
-    <div className="flex flex-row gap-4 pt-5">
+    <div className="flex flex-col md:flex-row gap-4 pt-5">
       <Button
         onClick={() => signIn("google")}
         className="flex items-center gap-2 px-6 py-5 rounded-xl bg-white text-black border border-gray-200 hover:bg-gray-100 shadow-sm font-semibold transition-all"
