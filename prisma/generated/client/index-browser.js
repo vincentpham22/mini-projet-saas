@@ -144,13 +144,24 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   emailVerified: 'emailVerified',
-  image: 'image'
+  image: 'image',
+  stripeCustomerId: 'stripeCustomerId'
 };
 
 exports.Prisma.VerificationTokenScalarFieldEnum = {
   identifier: 'identifier',
   token: 'token',
   expires: 'expires'
+};
+
+exports.Prisma.NotesScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  completed: 'completed',
+  createdAt: 'createdAt',
+  updateAt: 'updateAt',
+  userId: 'userId'
 };
 
 exports.Prisma.SortOrder = {
@@ -168,7 +179,8 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Session: 'Session',
   User: 'User',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  Notes: 'Notes'
 };
 
 /**
