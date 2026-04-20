@@ -15,38 +15,46 @@ export default async function PageNotes() {
 
   return (
     <section className='grid items-start gap-y-8'>
-      <div className="flex md:items-center md:justify-between flex-col md:flex-row px-2">
+      <div className="flex md:justify-between flex-col md:flex-row px-2">
         <div className="grid gap-1">
           <h2 className="text-3xl uppercase font-black">Notes</h2>
           <p className="text-lg text-muted-foreground">Ne perdez pas vos idées, prennez des notes</p>
           <div className="w-12 bg-white my-2 mx-1 h-px"></div>
         </div>
+          <Button className='mt-4 p-3 w-fit'>
+            <Link href="/dashboard/notes/create">Créer une note</Link>
+          </Button>
       </div>
-      <Link href="/dashboard/notes/create" className={buttonVariants()}>Créer une note</Link>
       {data.length < 1 ? (
-        <div className="flex min-h-100 flex-col items-center justify-center rounded-md border border-dashed p-3">
+        <div className="flex min-h-80 flex-col items-center justify-center rounded-md border border-dashed p-3">
           <div className="w-16 h-16 rounded-full flex items-center justify-center bg-orange-500 bg-opacity-20 mb-4">
             <File className='text-orange-900'></File>
           </div>
           <p className="text-lg text-white">Vous n'avez aucune note</p>
           <p className="text-muted-foreground text-sm">Commencez des maintenant à créer des notes via notre application</p>
-          <Button className='bg-orange-500 hover:bg-orange-600 text-white mt-4'>
+          <Button className='bg-orange-500 hover:bg-orange-600 text-white mt-6'>
             <Link href="/dashboard/notes/create">Créer une nouvelle note</Link>
           </Button>
         </div>
       ) : (
         <div className="flex flex-col space-y-4">
           {data?.map((item, index) => (
-            <Card key={index} className="flex items-center justify-between p-4">
-              <div>
-                <h2 className='text-orange-500 text-xl font-bold'>{item.title}</h2>
-                <p className='text-sm text-muted-foreground'>écrit le {new Intl.DateTimeFormat('fr-FR', {
+            <Card key={index} className="flex-row items-center justify-between p-4">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <h2 className='text-orange-500 text-xl font-bold'>{item.title}</h2>
+                  {item.completed && (
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 font-medium">Complété</span>
+                  )}
+                </div>
+                <p className='text-sm text-muted-foreground'>{item.description}</p>
+                <p className='text-xs text-muted-foreground'>écrit le {new Intl.DateTimeFormat('fr-FR', {
                   dateStyle: "full"
                 }).format(new Date(item.createdAt))}</p>
               </div>
               <div className="flex items-center gap-2">
                 <Button type="button" className="bg-yellow-500 hover:bg-yellow-600 text-white mt-4 mb-3">
-                  <Link href={`notes/note/${item.id}`}>
+                  <Link href={`/dashboard/notes/note/${item.id}`}>
                   <FilePenLine className='w-4'/>
                   </Link>
                   </Button>

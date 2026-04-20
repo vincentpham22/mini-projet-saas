@@ -3,15 +3,15 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { getUser, updateUser} from "@/lib/actionsUsers";
+import { getUser, updateUser } from "@/lib/actionsUsers";
+import ButtonDeleteAccount from "@/app/components/ButtonDeleteAccount";
 
-import React from 'react'
 
 export default async function PageSettings() {
   const user = await getUser();
 
   return (
-    <section className="border border-gray-200 rounded-md p-3">
+    <section>
       <h2 className="text-3xl uppercase font-black">Settings</h2>
       <p className="text-lg text-muted-foreground">Vos paramètres de profil</p>
       <div className="w-12 bg-white my-2 mx-1 h-px"></div>
@@ -20,7 +20,7 @@ export default async function PageSettings() {
         <Card>
           <CardHeader>
             <CardTitle>Modifier votre profil</CardTitle>
-            <CardDescription>Vous pouvez modifier votre nom, votre email et votre mot de passe.</CardDescription>
+            <CardDescription>Vous pouvez modifier votre nom</CardDescription>
           </CardHeader>
           <CardContent>
             {user?.image && (
@@ -44,10 +44,7 @@ export default async function PageSettings() {
           </CardFooter>
         </Card>
       </form>
-      <form action="">
-        <Input type="hidden" name="id" value="" />
-        <Button className="bg-red-500 mx-1 my-2 hover:bg-red-600 text-white">Supprimer votre compte</Button>
-      </form>
+      <ButtonDeleteAccount userId={user?.id as string} />
     </section>
   )
 }

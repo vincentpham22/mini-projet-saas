@@ -13,7 +13,7 @@ export default function DashboardNav() {
   ]
 
   return (
-    <nav className='flex md:flex-col md:h-full md:w-16 w-full lg:w-40 gap-2'>
+    <nav className='flex md:flex-col md:h-full md:w-16 w-full lg:w-40 gap-2 mt-5'>
         {menuDashboard.map((link, index) => {
             const isActive = pathname.startsWith(link.path)
             return (

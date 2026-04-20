@@ -9,9 +9,9 @@ import React from 'react'
 
 export default function CreatePage() {
   return (
-    <Card>
+    <Card className='p-5'>
       <form action={createNote} className='w-full'>
-      <CardHeader>
+      <CardHeader className='mb-10'>
         <CardTitle>Nouvelle note</CardTitle>
         <CardDescription>
           Quelques mots pour ne pas oublier
@@ -26,12 +26,12 @@ export default function CreatePage() {
           <Label htmlFor="description">Description</Label>
           <Textarea name='description' id='description' required placeholder='Description de votre note' />
         </div>
-        <div className="gap-y-2 flex flex-col">
-          <Label htmlFor="completed">En attente | Complet</Label>
+        <div className="gap-y-2 flex flex-row gap-5">
+          <Label htmlFor="completed">En attente | Complété</Label>
           <Input type="checkbox" name='completed' id='completed' className='w-6 cursor-pointer'/>
         </div>
       </CardContent>
-      <CardFooter className='flex items-center justify-between'>
+      <CardFooter className='flex items-center justify-between mt-3'>
         <Link href="/dashboard/notes" className="inline-flex items-center justify-center rounded-lg px-2.5 h-8 bg-red-500 hover:bg-red-600 text-white text-sm font-medium">Annuler</Link>
         <Button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white">
           Créer note

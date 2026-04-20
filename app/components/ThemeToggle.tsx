@@ -15,8 +15,8 @@ export function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="relative inline-flex h-9 w-9 items-center justify-center rounded-lg border border-input bg-background">
-        <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-        <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+        <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90 text-orange-500 hover:text-orange-600"/>
+        <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0 text-orange-500 hover:text-orange-600" />
         <span className="sr-only">Toggle theme</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

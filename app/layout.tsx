@@ -5,6 +5,8 @@ import { ThemeProvider } from "./components/theme-provider";
 import SessionProvider from "./components/SessionProvider";
 
 export const metadata: Metadata = {
+  title: "SaaS MDC",
+  description: "A SaaS application built with Next.js and Tailwind CSS",
 };
 
 export default function RootLayout({

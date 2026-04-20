@@ -11,9 +11,8 @@ export default function ButtonSignOut() {
         signOut({ callbackUrl: '/' });
     };
 
-
     return (
-        <div className="flex items-center justify-end mb-2 mt-2 lg:mt-0 p-3">
+        <div className="p-3">
             <Button onClick={handleSignOut} className="bg-orange-500 hover:bg-orange-600 text-white"><LogOut/></Button>
         </div>
     )

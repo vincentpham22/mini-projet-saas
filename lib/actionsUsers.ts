@@ -9,13 +9,24 @@ import { revalidatePath } from "next/cache";
 export const getUser = async () => {
     const session = await getServerSession(authOptions);
     if (!session || !session.user || !session.user.id) {
-        redirect('..//');
+        redirect('/');
     }
     const id = session.user.id as string;
     const user = await prisma.user.findUnique({
         where: {id}
     })
     return user;
+}
+
+export const deleteUser = async (formData: FormData) => {
+    try {
+        const id = formData.get('id') as string;
+        await prisma.notes.deleteMany({ where: { userId: id } })
+        await prisma.session.deleteMany({ where: { userId: id } })
+        await prisma.user.delete({ where: { id } })
+    } catch(error) {
+        console.error("Error deleting user:", error);
+    }
 }
 
 export const updateUser = async (formData: FormData) => {
@@ -33,5 +44,6 @@ export const updateUser = async (formData: FormData) => {
         console.error("Error updating user:", error);
     } finally {
         revalidatePath('/')
+        redirect('/dashboard/notes')
     }
 }
